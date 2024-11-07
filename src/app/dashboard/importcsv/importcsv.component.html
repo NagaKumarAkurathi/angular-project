@@ -1,0 +1,28 @@
+<div class="csv-import-container">
+    <h3>Import CSV File</h3>
+    <input 
+      type="file" 
+      (change)="onFileSelected($event)" 
+      accept=".csv" 
+      class="file-input"
+    />
+    <p *ngIf="!data.length">Please select a CSV file to import.</p>
+    
+    <div *ngIf="data.length > 0">
+      <h4>Imported Data:</h4>
+      <table class="csv-table">
+        <thead>
+          <tr>
+            <th *ngFor="let key of objectKeys(data[0])">{{ key }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data">
+            <td *ngFor="let key of objectKeys(row)">{{ row[key] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
